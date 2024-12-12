@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ${PWD}/index-nginx.html:/usr/share/nginx/html/index.html
+  mysrv:
+    image: python:slim
+    ports:
+      - 8000:8000
+    command: python -m http.server
+    working_dir: /test
+    volumes:
+      - ${PWD}/index-python.html:/test/index.html
+
+  
+    
